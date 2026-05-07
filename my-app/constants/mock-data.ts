@@ -1,0 +1,296 @@
+import type { Category, Product, Customer, Order } from '@/types';
+
+export const MOCK_CATEGORIES: Category[] = [
+  { id: '1', name: 'Tacos', sortOrder: 1, createdAt: new Date() },
+  { id: '2', name: 'Tortas', sortOrder: 2, createdAt: new Date() },
+  { id: '3', name: 'Bebidas', sortOrder: 3, createdAt: new Date() },
+  { id: '4', name: 'Postres', sortOrder: 4, createdAt: new Date() },
+  { id: '5', name: 'Extras', sortOrder: 5, createdAt: new Date() },
+];
+
+export const MOCK_PRODUCTS: Product[] = [
+  {
+    id: '1',
+    name: 'Taco de Asada',
+    description: 'Taco de carne asada con cebolla y cilantro',
+    price: 25,
+    categoryId: '1',
+    category: MOCK_CATEGORIES[0],
+    stockQuantity: 50,
+    isAvailable: true,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    id: '2',
+    name: 'Taco de Pastor',
+    description: 'Taco de carne al pastor con pina',
+    price: 22,
+    categoryId: '1',
+    category: MOCK_CATEGORIES[0],
+    stockQuantity: 45,
+    isAvailable: true,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    id: '3',
+    name: 'Taco de Carnitas',
+    description: 'Taco de carnitas de cerdo',
+    price: 24,
+    categoryId: '1',
+    category: MOCK_CATEGORIES[0],
+    stockQuantity: 8,
+    isAvailable: true,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    id: '4',
+    name: 'Taco de Suadero',
+    description: 'Taco de suadero de res',
+    price: 26,
+    categoryId: '1',
+    category: MOCK_CATEGORIES[0],
+    stockQuantity: 3,
+    isAvailable: true,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    id: '5',
+    name: 'Torta de Milanesa',
+    description: 'Torta con milanesa de res, aguacate, frijoles',
+    price: 65,
+    categoryId: '2',
+    category: MOCK_CATEGORIES[1],
+    stockQuantity: 15,
+    isAvailable: true,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    id: '6',
+    name: 'Torta de Jamon',
+    description: 'Torta con jamon, queso y aguacate',
+    price: 55,
+    categoryId: '2',
+    category: MOCK_CATEGORIES[1],
+    stockQuantity: 20,
+    isAvailable: true,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    id: '7',
+    name: 'Coca-Cola 600ml',
+    price: 25,
+    categoryId: '3',
+    category: MOCK_CATEGORIES[2],
+    stockQuantity: 30,
+    isAvailable: true,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    id: '8',
+    name: 'Agua Natural 600ml',
+    price: 15,
+    categoryId: '3',
+    category: MOCK_CATEGORIES[2],
+    stockQuantity: 40,
+    isAvailable: true,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    id: '9',
+    name: 'Horchata 1L',
+    price: 35,
+    categoryId: '3',
+    category: MOCK_CATEGORIES[2],
+    stockQuantity: 0,
+    isAvailable: false,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    id: '10',
+    name: 'Flan Napolitano',
+    price: 30,
+    categoryId: '4',
+    category: MOCK_CATEGORIES[3],
+    stockQuantity: 5,
+    isAvailable: true,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    id: '11',
+    name: 'Guacamole Extra',
+    price: 20,
+    categoryId: '5',
+    category: MOCK_CATEGORIES[4],
+    stockQuantity: 25,
+    isAvailable: true,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    id: '12',
+    name: 'Salsa Verde Extra',
+    price: 10,
+    categoryId: '5',
+    category: MOCK_CATEGORIES[4],
+    stockQuantity: 100,
+    isAvailable: true,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+];
+
+export const MOCK_CUSTOMERS: Customer[] = [
+  {
+    id: '1',
+    name: 'Juan Perez',
+    phone: '5551234567',
+    notes: 'Cliente frecuente',
+    debtAmount: 0,
+    totalPurchases: 2500,
+    lastPurchaseAt: new Date(Date.now() - 86400000), // yesterday
+    createdAt: new Date(Date.now() - 30 * 86400000),
+  },
+  {
+    id: '2',
+    name: 'Maria Garcia',
+    phone: '5559876543',
+    debtAmount: 150,
+    totalPurchases: 1800,
+    lastPurchaseAt: new Date(Date.now() - 3 * 86400000),
+    createdAt: new Date(Date.now() - 60 * 86400000),
+  },
+  {
+    id: '3',
+    name: 'Carlos Lopez',
+    phone: '5555551234',
+    notes: 'Oficina del centro',
+    debtAmount: 0,
+    totalPurchases: 5200,
+    lastPurchaseAt: new Date(),
+    createdAt: new Date(Date.now() - 90 * 86400000),
+  },
+  {
+    id: '4',
+    name: 'Ana Martinez',
+    debtAmount: 320,
+    totalPurchases: 890,
+    lastPurchaseAt: new Date(Date.now() - 7 * 86400000),
+    createdAt: new Date(Date.now() - 15 * 86400000),
+  },
+  {
+    id: '5',
+    name: 'Roberto Sanchez',
+    phone: '5552223333',
+    notes: 'Siempre pide sin cebolla',
+    debtAmount: 0,
+    totalPurchases: 3400,
+    lastPurchaseAt: new Date(Date.now() - 2 * 86400000),
+    createdAt: new Date(Date.now() - 120 * 86400000),
+  },
+];
+
+export const MOCK_ORDERS: Order[] = [
+  {
+    id: '1',
+    orderNumber: 1001,
+    customerId: '1',
+    customer: MOCK_CUSTOMERS[0],
+    items: [
+      { id: '1', orderId: '1', productId: '1', productName: 'Taco de Asada', quantity: 4, unitPrice: 25, subtotal: 100 },
+      { id: '2', orderId: '1', productId: '7', productName: 'Coca-Cola 600ml', quantity: 2, unitPrice: 25, subtotal: 50 },
+    ],
+    total: 150,
+    paymentStatus: 'paid',
+    orderStatus: 'completed',
+    createdAt: new Date(Date.now() - 3600000), // 1 hour ago
+    completedAt: new Date(Date.now() - 3000000),
+  },
+  {
+    id: '2',
+    orderNumber: 1002,
+    customerId: '2',
+    customer: MOCK_CUSTOMERS[1],
+    items: [
+      { id: '3', orderId: '2', productId: '5', productName: 'Torta de Milanesa', quantity: 2, unitPrice: 65, subtotal: 130 },
+      { id: '4', orderId: '2', productId: '8', productName: 'Agua Natural 600ml', quantity: 2, unitPrice: 15, subtotal: 30 },
+    ],
+    total: 160,
+    paymentStatus: 'pending',
+    orderStatus: 'pending',
+    adminNotes: 'Para llevar',
+    createdAt: new Date(Date.now() - 1800000), // 30 min ago
+  },
+  {
+    id: '3',
+    orderNumber: 1003,
+    items: [
+      { id: '5', orderId: '3', productId: '2', productName: 'Taco de Pastor', quantity: 6, unitPrice: 22, subtotal: 132 },
+      { id: '6', orderId: '3', productId: '11', productName: 'Guacamole Extra', quantity: 1, unitPrice: 20, subtotal: 20 },
+    ],
+    total: 152,
+    paymentStatus: 'paid',
+    orderStatus: 'completed',
+    createdAt: new Date(Date.now() - 7200000), // 2 hours ago
+    completedAt: new Date(Date.now() - 6600000),
+  },
+  {
+    id: '4',
+    orderNumber: 1004,
+    customerId: '3',
+    customer: MOCK_CUSTOMERS[2],
+    items: [
+      { id: '7', orderId: '4', productId: '1', productName: 'Taco de Asada', quantity: 10, unitPrice: 25, subtotal: 250 },
+      { id: '8', orderId: '4', productId: '2', productName: 'Taco de Pastor', quantity: 10, unitPrice: 22, subtotal: 220 },
+      { id: '9', orderId: '4', productId: '7', productName: 'Coca-Cola 600ml', quantity: 5, unitPrice: 25, subtotal: 125 },
+    ],
+    total: 595,
+    paymentStatus: 'paid',
+    orderStatus: 'pending',
+    adminNotes: 'Pedido grande para oficina',
+    createdAt: new Date(Date.now() - 900000), // 15 min ago
+  },
+  {
+    id: '5',
+    orderNumber: 1005,
+    items: [
+      { id: '10', orderId: '5', productId: '6', productName: 'Torta de Jamon', quantity: 1, unitPrice: 55, subtotal: 55 },
+    ],
+    total: 55,
+    paymentStatus: 'paid',
+    orderStatus: 'cancelled',
+    adminNotes: 'Cliente cancelo',
+    createdAt: new Date(Date.now() - 5400000), // 1.5 hours ago
+  },
+];
+
+// Helper function to get mock daily stats
+export function getMockDailyStats() {
+  const todayOrders = MOCK_ORDERS.filter(o => o.orderStatus !== 'cancelled');
+  const totalSales = todayOrders.reduce((sum, o) => sum + o.total, 0);
+  const totalPaid = todayOrders.filter(o => o.paymentStatus === 'paid').reduce((sum, o) => sum + o.total, 0);
+  const totalPending = todayOrders.filter(o => o.paymentStatus === 'pending').reduce((sum, o) => sum + o.total, 0);
+  
+  return {
+    date: new Date(),
+    totalSales,
+    totalPaid,
+    totalPending,
+    ordersCompleted: MOCK_ORDERS.filter(o => o.orderStatus === 'completed').length,
+    ordersCancelled: MOCK_ORDERS.filter(o => o.orderStatus === 'cancelled').length,
+    topProducts: [
+      { productId: '1', productName: 'Taco de Asada', quantity: 14, revenue: 350 },
+      { productId: '2', productName: 'Taco de Pastor', quantity: 16, revenue: 352 },
+      { productId: '7', productName: 'Coca-Cola 600ml', quantity: 7, revenue: 175 },
+    ],
+  };
+}
